@@ -1,0 +1,37 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using SubscriptionsTracker.ViewModels;
+
+namespace SubscriptionsTracker.Views
+{
+    public partial class StatisticsPage : ContentPage
+    {
+        public StatisticsViewModel ViewModel { get; }
+
+        public StatisticsPage(StatisticsViewModel viewModel)
+        {
+            ViewModel = viewModel;
+            BindingContext = ViewModel;
+            Title = "Статистика";
+
+            var title = new Label { Text = "Сумма за месяц:", FontAttributes = FontAttributes.None };
+            var total = new Label { FontAttributes = FontAttributes.Bold };
+            total.SetBinding(Label.TextProperty, "MonthlyTotal");
+
+            Content = new ScrollView
+            {
+                Content = new VerticalStackLayout
+                {
+                    Padding = 20,
+                    Children = { title, total }
+                }
+            };
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await ViewModel.LoadAsync(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
+        }
+    }
+}

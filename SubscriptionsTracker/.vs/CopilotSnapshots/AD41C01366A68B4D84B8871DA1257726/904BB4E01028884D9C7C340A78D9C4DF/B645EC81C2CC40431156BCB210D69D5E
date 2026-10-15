@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using SubscriptionsTracker.Models;
+
+namespace SubscriptionsTracker.Services
+{
+    public class SubscriptionService
+    {
+        private readonly ISubscriptionRepository _repo;
+
+        public SubscriptionService(ISubscriptionRepository repo)
+        {
+            _repo = repo;
+        }
+
+        public Task<IEnumerable<Subscription>> GetAllAsync() => _repo.GetAllAsync();
+
+        public Task AddAsync(Subscription s) => _repo.AddAsync(s);
+
+        public Task UpdateAsync(Subscription s) => _repo.UpdateAsync(s);
+
+        public Task DeleteAsync(Guid id) => _repo.DeleteAsync(id);
+
+        public async Task<decimal> GetMonthlyTotalAsync(int year, int month)
+        {
+            var all = await _repo.GetAllAsync();
+            // estimate monthly spend by summing amounts for subscriptions with monthly frequency
+            var total = all.Where(s => s.IsActive)
+                           .Sum(s => s.Amount * FrequencyMultiplierForMonth(s.Frequency, year, month));
+            return total;
+        }
+
+        private decimal FrequencyMultiplierForMonth(Frequency freq, int year, int month)
+        {
+            // Simplified: if yearly then divide by 12, monthly => 1, weekly => 52/12, etc.
+            return freq switch
+            {
+                Frequency.Daily => 30m,
+                Frequency.Weekly => 52m / 12m,
+                Frequency.Monthly => 1m,
+                Frequency.Quarterly => 1m / 3m,
+                Frequency.Yearly => 1m / 12m,
+                Frequency.Custom => 1m,
+                _ => 1m,
+            };
+        }
+    }
+}

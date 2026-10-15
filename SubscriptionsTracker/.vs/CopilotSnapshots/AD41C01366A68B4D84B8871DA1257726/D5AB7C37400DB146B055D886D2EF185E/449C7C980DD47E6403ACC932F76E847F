@@ -1,0 +1,15 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SubscriptionsTracker.Views.SubscriptionEditPage"
+             Title="Редактирование подписки">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Entry x:Name="NameEntry" Placeholder="Название сервиса" />
+            <Entry x:Name="AmountEntry" Placeholder="Сумма" Keyboard="Numeric" />
+            <DatePicker x:Name="StartDatePicker" />
+            <Button Text="Сохранить" Clicked="OnSaveClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

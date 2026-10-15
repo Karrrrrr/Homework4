@@ -1,0 +1,35 @@
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using SubscriptionsTracker.Models;
+using SubscriptionsTracker.Services;
+
+namespace SubscriptionsTracker.ViewModels
+{
+    public class MainViewModel : BindableObject
+    {
+        private readonly SubscriptionService _service;
+
+        public ObservableCollection<Subscription> Subscriptions { get; } = new();
+        private decimal _monthlyTotal;
+        public decimal MonthlyTotal
+        {
+            get => _monthlyTotal;
+            private set { _monthlyTotal = value; OnPropertyChanged(); }
+        }
+
+        public MainViewModel(SubscriptionService service)
+        {
+            _service = service;
+        }
+
+        public async Task LoadAsync()
+        {
+            Subscriptions.Clear();
+            var all = await _service.GetAllAsync();
+            foreach (var s in all)
+                Subscriptions.Add(s);
+
+            MonthlyTotal = await _service.GetMonthlyTotalAsync(System.DateTime.UtcNow.Year, System.DateTime.UtcNow.Month);
+        }
+    }
+}

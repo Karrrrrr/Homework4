@@ -1,0 +1,24 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using SubscriptionsTracker.ViewModels;
+
+namespace SubscriptionsTracker.Views
+{
+    public partial class StatisticsPage : ContentPage
+    {
+        public StatisticsViewModel ViewModel { get; }
+
+        public StatisticsPage(StatisticsViewModel viewModel)
+        {
+            InitializeComponent();
+            ViewModel = viewModel;
+            BindingContext = ViewModel;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await ViewModel.LoadAsync(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
+        }
+    }
+}

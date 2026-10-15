@@ -1,0 +1,40 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using SubscriptionsTracker.ViewModels;
+
+namespace SubscriptionsTracker.Views
+{
+    public partial class SubscriptionEditPage : ContentPage
+    {
+        public SubscriptionViewModel ViewModel { get; }
+
+        public SubscriptionEditPage(SubscriptionViewModel viewModel)
+        {
+            ViewModel = viewModel;
+            BindingContext = ViewModel;
+            Title = "Редактирование подписки";
+
+            var name = new Entry { Placeholder = "Название сервиса" };
+            name.SetBinding(Entry.TextProperty, "Model.Name");
+            var amount = new Entry { Placeholder = "Сумма", Keyboard = Keyboard.Numeric };
+            amount.SetBinding(Entry.TextProperty, new Binding("Model.Amount", BindingMode.TwoWay, stringFormat: "{0}"));
+            var start = new DatePicker();
+            start.SetBinding(DatePicker.DateProperty, "Model.StartDate");
+            var save = new Button { Text = "Сохранить" };
+            save.Clicked += async (s, e) =>
+            {
+                await ViewModel.SaveAsync();
+                await Navigation.PopAsync();
+            };
+
+            Content = new ScrollView
+            {
+                Content = new VerticalStackLayout
+                {
+                    Padding = 20,
+                    Children = { name, amount, start, save }
+                }
+            };
+        }
+    }
+}

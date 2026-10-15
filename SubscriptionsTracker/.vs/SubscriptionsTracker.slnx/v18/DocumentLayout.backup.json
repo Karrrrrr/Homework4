@@ -1,0 +1,488 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Homework 4\\SubscriptionsTracker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker.Tests\\SubscriptionServiceTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SubscriptionsTracker.Tests\\SubscriptionServiceTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker.Tests\\SubscriptionsTracker.Tests.csproj||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SubscriptionsTracker.Tests\\SubscriptionsTracker.Tests.csproj||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\platforms\\android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\platforms\\android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\views\\subscriptioneditpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\views\\subscriptioneditpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\10.0.110\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\models\\frequency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\models\\frequency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\models\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\models\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\services\\isubscriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\services\\isubscriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\services\\inmemorysubscriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\services\\inmemorysubscriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\services\\subscriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\services\\subscriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\notifications\\inotificationscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\notifications\\inotificationscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\notifications\\notificationscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\notifications\\notificationscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\viewmodels\\subscriptionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\viewmodels\\subscriptionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\viewmodels\\statisticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\viewmodels\\statisticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\views\\subscriptioneditpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\views\\subscriptioneditpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\views\\statisticspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\views\\statisticspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\converters\\initialsconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\converters\\initialsconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\models\\statisticsmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\models\\statisticsmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\converters\\subscriptioninfoconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\converters\\subscriptioninfoconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|c:\\homework 4\\subscriptionstracker\\subscriptionstracker\\services\\tabindicatormessenger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A57DF334-03E5-CC82-669A-DB92B768EE67}|SubscriptionsTracker\\SubscriptionsTracker.csproj|solutionrelative:subscriptionstracker\\services\\tabindicatormessenger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Program.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Program.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Program.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T23:26:13.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SubscriptionServiceTests.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker.Tests\\SubscriptionServiceTests.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker.Tests\\SubscriptionServiceTests.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker.Tests\\SubscriptionServiceTests.cs",
+              "RelativeToolTip": "SubscriptionsTracker.Tests\\SubscriptionServiceTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T22:25:45.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SubscriptionsTracker.Tests.csproj",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker.Tests\\SubscriptionsTracker.Tests.csproj",
+              "RelativeDocumentMoniker": "SubscriptionsTracker.Tests\\SubscriptionsTracker.Tests.csproj",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker.Tests\\SubscriptionsTracker.Tests.csproj",
+              "RelativeToolTip": "SubscriptionsTracker.Tests\\SubscriptionsTracker.Tests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-15T22:20:45.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "TabIndicatorMessenger.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\TabIndicatorMessenger.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Services\\TabIndicatorMessenger.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\TabIndicatorMessenger.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Services\\TabIndicatorMessenger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T22:18:00.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainActivity.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Platforms\\Android\\MainActivity.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Platforms\\Android\\MainActivity.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Platforms\\Android\\MainActivity.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Platforms\\Android\\MainActivity.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T21:38:50.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Styles.xaml",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Resources\\Styles\\Styles.xaml",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Resources\\Styles\\Styles.xaml",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Resources\\Styles\\Styles.xaml",
+              "RelativeToolTip": "SubscriptionsTracker\\Resources\\Styles\\Styles.xaml",
+              "ViewState": "AgIAAJkBAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-15T19:19:46.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "StatisticsModels.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\StatisticsModels.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Models\\StatisticsModels.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\StatisticsModels.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Models\\StatisticsModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:35:32.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\MainPage.xaml.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\MainPage.xaml.cs",
+              "ViewState": "AgIAAE0BAAAAAAAAAAAUwE8BAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:26:43.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SubscriptionEditPopup.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Views\\SubscriptionEditPopup.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Views\\SubscriptionEditPopup.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Views\\SubscriptionEditPopup.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Views\\SubscriptionEditPopup.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAArwNkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T20:52:59.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\AppShell.xaml",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\AppShell.xaml",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\AppShell.xaml",
+              "RelativeToolTip": "SubscriptionsTracker\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-15T17:36:10.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "SubscriptionInfoConverter.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Converters\\SubscriptionInfoConverter.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Converters\\SubscriptionInfoConverter.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Converters\\SubscriptionInfoConverter.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Converters\\SubscriptionInfoConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T19:36:42.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Microsoft.Maui.Resizetizer.After.targets",
+              "DocumentMoniker": "C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\10.0.110\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
+              "RelativeDocumentMoniker": "..\\..\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\10.0.110\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
+              "ToolTip": "C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\10.0.110\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
+              "RelativeToolTip": "..\\..\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\10.0.110\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
+              "ViewState": "AgIAAMcCAAAAAAAAAAAkwNwCAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-10-15T20:30:17.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAIBQwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:17:18.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "INotificationScheduler.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Notifications\\INotificationScheduler.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Notifications\\INotificationScheduler.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Notifications\\INotificationScheduler.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Notifications\\INotificationScheduler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:17:07.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SubscriptionService.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\SubscriptionService.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Services\\SubscriptionService.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\SubscriptionService.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Services\\SubscriptionService.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAIBJwHgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:17:03.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "InMemorySubscriptionRepository.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\InMemorySubscriptionRepository.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Services\\InMemorySubscriptionRepository.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\InMemorySubscriptionRepository.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Services\\InMemorySubscriptionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:16:56.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ISubscriptionRepository.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\ISubscriptionRepository.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Services\\ISubscriptionRepository.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Services\\ISubscriptionRepository.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Services\\ISubscriptionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:16:48.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Subscription.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\Subscription.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Models\\Subscription.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\Subscription.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Models\\Subscription.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:16:43.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Frequency.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\Frequency.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Models\\Frequency.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\Frequency.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Models\\Frequency.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:16:36.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\MauiProgram.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\MauiProgram.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\MauiProgram.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBJwAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T17:36:15.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "InitialsConverter.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Converters\\InitialsConverter.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Converters\\InitialsConverter.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Converters\\InitialsConverter.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Converters\\InitialsConverter.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:25:03.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "StatisticsPage.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Views\\StatisticsPage.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Views\\StatisticsPage.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Views\\StatisticsPage.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Views\\StatisticsPage.cs",
+              "ViewState": "AgIAAGYBAAAAAAAAAABBwHkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:20:44.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "SubscriptionEditPage.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Views\\SubscriptionEditPage.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Views\\SubscriptionEditPage.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Views\\SubscriptionEditPage.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Views\\SubscriptionEditPage.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAEBUwLwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:20:36.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "StatisticsViewModel.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\ViewModels\\StatisticsViewModel.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\ViewModels\\StatisticsViewModel.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\ViewModels\\StatisticsViewModel.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\ViewModels\\StatisticsViewModel.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAIBJwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:17:31.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SubscriptionViewModel.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\ViewModels\\SubscriptionViewModel.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\ViewModels\\SubscriptionViewModel.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\ViewModels\\SubscriptionViewModel.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\ViewModels\\SubscriptionViewModel.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAABRwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:17:25.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Models\\Category.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Models\\Category.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:16:32.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "NotificationScheduler.cs",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Notifications\\NotificationScheduler.cs",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\Notifications\\NotificationScheduler.cs",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\Notifications\\NotificationScheduler.cs",
+              "RelativeToolTip": "SubscriptionsTracker\\Notifications\\NotificationScheduler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T18:17:13.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\App.xaml",
+              "RelativeDocumentMoniker": "SubscriptionsTracker\\App.xaml",
+              "ToolTip": "C:\\Homework 4\\SubscriptionsTracker\\SubscriptionsTracker\\App.xaml",
+              "RelativeToolTip": "SubscriptionsTracker\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-15T17:35:23.253Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

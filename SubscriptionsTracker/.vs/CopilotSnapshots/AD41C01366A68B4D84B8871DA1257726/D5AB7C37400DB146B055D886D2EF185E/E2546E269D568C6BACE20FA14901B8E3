@@ -1,0 +1,25 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using SubscriptionsTracker.ViewModels;
+
+namespace SubscriptionsTracker.Views
+{
+    public partial class SubscriptionEditPage : ContentPage
+    {
+        public SubscriptionViewModel ViewModel { get; }
+
+        public SubscriptionEditPage(SubscriptionViewModel viewModel)
+        {
+            InitializeComponent();
+            ViewModel = viewModel;
+            BindingContext = ViewModel;
+        }
+
+        private async void OnSaveClicked(object? sender, EventArgs e)
+        {
+            // Basic parsing and validation would be here
+            await ViewModel.SaveAsync();
+            await Navigation.PopAsync();
+        }
+    }
+}

@@ -1,0 +1,153 @@
+﻿using System;
+using System.Linq;
+using Microsoft.Maui.Controls;
+using SubscriptionsTracker.ViewModels;
+using SubscriptionsTracker.Models;
+
+namespace SubscriptionsTracker.Views
+{
+    public partial class StatisticsPage : ContentPage
+    {
+        public StatisticsViewModel ViewModel { get; }
+
+        public StatisticsPage(StatisticsViewModel viewModel)
+        {
+            ViewModel = viewModel;
+            BindingContext = ViewModel;
+            Title = "Статистика";
+
+            // Header
+            var headerGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(16,6) };
+            headerGrid.Add(new Label { Text = "Статистика", FontSize = 22, FontAttributes = FontAttributes.Bold, VerticalOptions = LayoutOptions.Center }, 0, 0);
+            headerGrid.Add(new Label { Text = DateTime.Now.ToString("d MMMM yyyy г.", new System.Globalization.CultureInfo("ru-RU")), FontSize = 12, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.End, FontFamily = "OpenSansRegular" }, 1, 0);
+
+            // Summary 2x2
+            var summaryGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star) }, RowDefinitions = { new RowDefinition(GridLength.Auto), new RowDefinition(GridLength.Auto) }, ColumnSpacing = 8 };
+            summaryGrid.Padding = new Thickness(16, 0, 16, 0);
+
+            Frame MakeCard(string title, string binding)
+            {
+                var f = new Frame { Padding = 12, HasShadow = false, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 6 };
+                var vs = new VerticalStackLayout();
+                vs.Add(new Label { Text = title, FontSize = 12 });
+                var label = new Label { FontSize = 20, FontAttributes = FontAttributes.Bold };
+                label.SetBinding(Label.TextProperty, binding);
+                vs.Add(label);
+                f.Content = vs;
+                return f;
+            }
+
+            var card1 = MakeCard("В месяц", "MonthlyTotal, StringFormat={0:N0} ₽");
+            var card2 = MakeCard("В год", "YearTotal, StringFormat={0:N0} ₽");
+            var card3 = MakeCard("За 12 месяцев", "Last12Total, StringFormat={0:N0} ₽");
+            var card4 = MakeCard("За всё время", "AllTimeTotal, StringFormat={0:N0} ₽");
+
+            summaryGrid.Add(card1, 0, 0);
+            summaryGrid.Add(card2, 1, 0);
+            summaryGrid.Add(card3, 0, 1);
+            summaryGrid.Add(card4, 1, 1);
+
+            // Monthly bar chart (simple)
+            var chartLabelGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(16, 12, 16, 0) };
+            chartLabelGrid.Add(new Label { Text = "Расходы по месяцам", FontSize = 14 }, 0, 0);
+            var monthInfo = new Label { Text = DateTime.UtcNow.ToString("MMM yyyy") + " — 0 ₽", FontSize = 12 };
+            chartLabelGrid.Add(monthInfo, 1, 0);
+
+            var barsGrid = new Grid { Padding = new Thickness(16, 8, 16, 8) };
+            var barsStack = new HorizontalStackLayout { Spacing = 8, VerticalOptions = LayoutOptions.Start, HeightRequest = 120 };
+            // Will create 12 bars bound to MonthlyBreakdown later in OnAppearing
+            for (int i = 0; i < 12; i++)
+            {
+                var bar = new BoxView { WidthRequest = 18, HeightRequest = 8, BackgroundColor = Color.FromArgb("#E9E9E9"), VerticalOptions = LayoutOptions.End };
+                barsStack.Add(bar);
+            }
+
+            // Category breakdown
+            var catLabel = new Label { Text = "По категориям, в месяц", FontSize = 14, Margin = new Thickness(16, 8, 0, 0) };
+            var catStack = new VerticalStackLayout { Spacing = 8, Padding = new Thickness(16, 8, 16, 0) };
+            // Will populate category items in OnAppearing
+
+            // Top subscriptions
+            var topLabel = new Label { Text = "Самые дорогие, в год", FontSize = 14, Margin = new Thickness(16, 16, 0, 0) };
+            var topStack = new VerticalStackLayout { Spacing = 4, Padding = new Thickness(16, 8, 16, 16) };
+
+            var main = new VerticalStackLayout { Spacing = 0 };
+            main.Add(headerGrid);
+            main.Add(summaryGrid);
+            main.Add(chartLabelGrid);
+            main.Add(barsStack);
+            main.Add(catLabel);
+            main.Add(catStack);
+            main.Add(topLabel);
+            main.Add(topStack);
+
+            Content = new ScrollView { Content = main };
+
+            // store references for update
+            _barsStack = barsStack;
+            _catStack = catStack;
+            _topStack = topStack;
+            _monthInfo = monthInfo;
+        }
+
+        HorizontalStackLayout _barsStack;
+        VerticalStackLayout _catStack;
+        VerticalStackLayout _topStack;
+    Label _monthInfo;
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await ViewModel.LoadAsync(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
+
+            // Update bars heights
+            var arr = ViewModel.MonthlyBreakdown ?? new decimal[12];
+            var max = arr.Max();
+            for (int i = 0; i < 12 && i < _barsStack.Children.Count; i++)
+            {
+                var bar = _barsStack.Children[i] as BoxView;
+                if (bar != null)
+                {
+                    var height = max > 0 ? (int)(100 * (arr[i] / max)) : 8;
+                    bar.HeightRequest = Math.Max(8, height);
+                    bar.BackgroundColor = i == 11 ? Color.FromArgb("#2563EB") : Color.FromArgb("#E9E9E9");
+                }
+            }
+
+            // Categories
+            _catStack.Children.Clear();
+            foreach (var cs in ViewModel.CategoryStats)
+            {
+                var row = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Auto), new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(0,8) };
+                var color = CategoryColor(cs.Category);
+                row.Add(new BoxView { WidthRequest = 12, HeightRequest = 12, BackgroundColor = color, VerticalOptions = LayoutOptions.Center }, 0, 0);
+                row.Add(new Label { Text = cs.Category.ToString(), VerticalOptions = LayoutOptions.Center }, 1, 0);
+                row.Add(new Label { Text = $"{cs.Amount:N0} ₽", VerticalOptions = LayoutOptions.Center }, 2, 0);
+                _catStack.Add(row);
+            }
+
+            // Top subscriptions
+            _topStack.Children.Clear();
+            int idx = 1;
+            foreach (var t in ViewModel.TopSubscriptions)
+            {
+                var g = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Auto), new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(0,8) };
+                g.Add(new Label { Text = idx.ToString(), VerticalOptions = LayoutOptions.Center }, 0, 0);
+                g.Add(new Label { Text = t.Name, VerticalOptions = LayoutOptions.Center }, 1, 0);
+                g.Add(new Label { Text = $"{t.Amount:N0} ₽", VerticalOptions = LayoutOptions.Center }, 2, 0);
+                _topStack.Add(g);
+                idx++;
+            }
+        }
+
+        Color CategoryColor(Category c) => c switch
+        {
+            Category.Video => Color.FromArgb("#2563EB"),
+            Category.Music => Color.FromArgb("#60A5FA"),
+            Category.Cloud => Color.FromArgb("#A3E635"),
+            Category.Work => Color.FromArgb("#6B7280"),
+            _ => Color.FromArgb("#D1D5DB"),
+        };
+    }
+}
+

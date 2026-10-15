@@ -1,0 +1,243 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using System.Globalization;
+using SubscriptionsTracker.ViewModels;
+using SubscriptionsTracker.Converters;
+using SubscriptionsTracker.Models;
+
+namespace SubscriptionsTracker
+{
+    public partial class MainPage : ContentPage
+    {
+        private readonly MainViewModel _vm;
+        private readonly IServiceProvider _services;
+        CollectionView _collectionView;
+        Label _noSubscriptionsLabel;
+
+        public MainPage(MainViewModel vm, IServiceProvider services)
+        {
+            _vm = vm;
+            _services = services;
+            BindingContext = _vm;
+            // remove any page padding (safe area) so header sits at top
+            this.Padding = new Thickness(0);
+
+            // Build UI in code to avoid XAML generation issues in this environment
+            var converter = new InitialsConverter();
+
+            var headerGrid = new Grid { ColumnDefinitions = new ColumnDefinitionCollection { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(0,0) };
+            headerGrid.Add(new Label { Text = "Подписки", FontSize = 22, FontAttributes = FontAttributes.Bold, VerticalOptions = LayoutOptions.Center, FontFamily = "OpenSansSemibold" }, 0, 0);
+            headerGrid.Add(new Label { Text = DateTime.Now.ToString("d MMMM yyyy г.", new CultureInfo("ru-RU")), FontSize = 12, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.End, FontFamily = "OpenSansRegular" }, 1, 0);
+
+            // Summary cards
+            var cardsGrid = new Grid { ColumnDefinitions = new ColumnDefinitionCollection { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star) }, ColumnSpacing = 8 };
+
+            var leftFrame = new Frame { Padding = 12, HasShadow = false, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 6 };
+            var leftStack = new VerticalStackLayout();
+            leftStack.Add(new Label { Text = "В месяц", FontSize = 12 });
+            var monthlyLabel = new Label { FontSize = 20, FontAttributes = FontAttributes.Bold };
+            monthlyLabel.SetBinding(Label.TextProperty, new Binding("MonthlyTotal", stringFormat: "{0:N0} ₽"));
+            monthlyLabel.FontFamily = "OpenSansSemibold";
+            leftStack.Add(monthlyLabel);
+            leftFrame.Content = leftStack;
+
+            var rightFrame = new Frame { Padding = 12, HasShadow = false, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 6 };
+            var rightStack = new VerticalStackLayout();
+            rightStack.Add(new Label { Text = "Активных", FontSize = 12 });
+            var activeLabel = new Label { FontSize = 20, FontAttributes = FontAttributes.Bold };
+            activeLabel.SetBinding(Label.TextProperty, new Binding("Subscriptions.Count"));
+            activeLabel.FontFamily = "OpenSansSemibold";
+            rightStack.Add(activeLabel);
+            rightFrame.Content = rightStack;
+
+            cardsGrid.Add(leftFrame, 0, 0);
+            cardsGrid.Add(rightFrame, 1, 0);
+
+            // Filters displayed in two rows (no scrolling)
+            var filtersGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star) }, RowDefinitions = { new RowDefinition(GridLength.Auto), new RowDefinition(GridLength.Auto) }, ColumnSpacing = 8, RowSpacing = 8 };
+            var btnAll = new Button { Text = "Все", BackgroundColor = Color.FromArgb("#111217"), TextColor = Colors.White, CornerRadius = 12, FontFamily = "OpenSansSemibold" };
+            var btnVideo = new Button { Text = "Видео", BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 12 };
+            var btnMusic = new Button { Text = "Музыка", BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 12 };
+            var btnCloud = new Button { Text = "Облако", BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 12 };
+            var btnWork = new Button { Text = "Работа", BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 12 };
+            var btnOther = new Button { Text = "Другое", BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 12 };
+            filtersGrid.Add(btnAll, 0, 0);
+            filtersGrid.Add(btnVideo, 1, 0);
+            filtersGrid.Add(btnMusic, 2, 0);
+            filtersGrid.Add(btnCloud, 0, 1);
+            filtersGrid.Add(btnWork, 1, 1);
+            filtersGrid.Add(btnOther, 2, 1);
+
+            // CollectionView
+            _collectionView = new CollectionView { SelectionMode = SelectionMode.Single };
+            _collectionView.SetBinding(ItemsView.ItemsSourceProperty, new Binding("FilteredSubscriptions"));
+            _collectionView.ItemTemplate = new DataTemplate(() =>
+            {
+                var grid = new Grid { Padding = 8, ColumnDefinitions = { new ColumnDefinition(GridLength.Auto), new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto), new ColumnDefinition(GridLength.Auto) } };
+
+                var avatarFrame = new Frame { WidthRequest = 44, HeightRequest = 44, CornerRadius = 8, BackgroundColor = Color.FromArgb("#F1F3F5"), HasShadow = false, VerticalOptions = LayoutOptions.Center, Padding = 0 };
+                var avatarLabel = new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, FontAttributes = FontAttributes.Bold, FontFamily = "OpenSansSemibold", TextColor = Color.FromArgb("#111217"), FontSize = 14 };
+                avatarLabel.SetBinding(Label.TextProperty, new Binding("Name", converter: converter));
+                avatarFrame.Content = avatarLabel;
+
+                var detailStack = new VerticalStackLayout { Spacing = 2, Padding = new Thickness(12, 0) };
+                detailStack.HorizontalOptions = LayoutOptions.StartAndExpand;
+                var nameLabel = new Label { FontAttributes = FontAttributes.Bold };
+                nameLabel.SetBinding(Label.TextProperty, "Name");
+                nameLabel.FontFamily = "OpenSansSemibold";
+                var infoLabel = new Label { FontSize = 12, TextColor = Color.FromArgb("#6B6B6B") };
+                infoLabel.SetBinding(Label.TextProperty, new Binding(path: ".", converter: new Converters.SubscriptionInfoConverter()));
+                // We will create a composite binding for category and date in code-behind using Bindings not supported here easily; instead bind to Name as fallback
+                detailStack.Add(nameLabel);
+                detailStack.Add(infoLabel);
+
+                var priceStack = new VerticalStackLayout { HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center, WidthRequest = 100 };
+                var amountLabel = new Label { FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.End };
+                amountLabel.FontFamily = "OpenSansSemibold";
+                amountLabel.SetBinding(Label.TextProperty, new Binding("Amount", stringFormat: "{0:N0} ₽"));
+                var freqLabel = new Label { FontSize = 11, TextColor = Color.FromArgb("#6B6B6B"), HorizontalOptions = LayoutOptions.End, Text = "в месяц" };
+                priceStack.Add(amountLabel);
+                priceStack.Add(freqLabel);
+
+                grid.Add(avatarFrame, 0, 0);
+                grid.Add(detailStack, 1, 0);
+                grid.Add(priceStack, 2, 0);
+
+                var arrowLabel = new Label { Text = ">", FontSize = 18, TextColor = Color.FromArgb("#6B6B6B"), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.End };
+                grid.Add(arrowLabel, 3, 0);
+
+                return grid; // return view for DataTemplate
+            });
+
+            // No subscriptions label
+            _noSubscriptionsLabel = new Label { Text = "Подписок ещё нет", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, IsVisible = false, FontFamily = "OpenSansRegular", Opacity = 1.0 };
+
+            // Assemble page with overlay FAB
+            var main = new VerticalStackLayout { Spacing = 12, Padding = new Thickness(16,0,16,96) };
+            main.Add(headerGrid);
+            main.Add(cardsGrid);
+            main.Add(filtersGrid);
+            main.Add(_noSubscriptionsLabel);
+            main.Add(_collectionView);
+            // remove decorative BoxView to avoid styled dark stripe
+
+            // Floating add button (square styled)
+            var fab = new Button { Text = "+", WidthRequest = 64, HeightRequest = 64, CornerRadius = 12, BackgroundColor = Color.FromArgb("#2563EB"), TextColor = Colors.White, HorizontalOptions = LayoutOptions.Center };
+            fab.Clicked += async (s, e) => await OnAddClicked();
+            // ensure FAB is on top of bottom bar
+            fab.ZIndex = 10;
+
+            var outer = new Grid();
+            outer.RowDefinitions.Add(new RowDefinition(GridLength.Star));
+            outer.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+            outer.Add(new ScrollView { Content = main });
+            Grid.SetRow(main, 0);
+            outer.Add(fab);
+            Grid.SetRow(fab, 1);
+            // Bottom navigation bar
+            var bottomBar = BuildBottomBar(isStatistics:false);
+            outer.Add(bottomBar);
+            Grid.SetRow(bottomBar, 1);
+            // center fab and overlap slightly
+            fab.HorizontalOptions = LayoutOptions.Center;
+            fab.Margin = new Thickness(0, -32, 0, 12);
+
+            // hide shell nav bar top empty area
+            Shell.SetNavBarIsVisible(this, false);
+
+            Content = outer;
+
+            // Wire filter buttons
+            btnAll.Clicked += (s, e) => { _vm.SelectedCategory = null; StyleSelectedFilter(btnAll, new[] { btnVideo, btnMusic, btnCloud, btnWork, btnOther }); };
+            btnVideo.Clicked += (s, e) => { _vm.SelectedCategory = Category.Video; StyleSelectedFilter(btnVideo, new[] { btnAll, btnMusic, btnCloud, btnWork, btnOther }); };
+            btnMusic.Clicked += (s, e) => { _vm.SelectedCategory = Category.Music; StyleSelectedFilter(btnMusic, new[] { btnAll, btnVideo, btnCloud, btnWork, btnOther }); };
+            btnCloud.Clicked += (s, e) => { _vm.SelectedCategory = Category.Cloud; StyleSelectedFilter(btnCloud, new[] { btnAll, btnVideo, btnMusic, btnWork, btnOther }); };
+            btnWork.Clicked += (s, e) => { _vm.SelectedCategory = Category.Work; StyleSelectedFilter(btnWork, new[] { btnAll, btnVideo, btnMusic, btnCloud, btnOther }); };
+            btnOther.Clicked += (s, e) => { _vm.SelectedCategory = Category.Other; StyleSelectedFilter(btnOther, new[] { btnAll, btnVideo, btnMusic, btnCloud, btnWork }); };
+
+            // initial filter style
+            StyleSelectedFilter(btnAll, new[] { btnVideo, btnMusic, btnCloud, btnWork, btnOther });
+
+            // Selection handling
+            _collectionView.SelectionChanged += async (s, e) =>
+            {
+                var selected = e.CurrentSelection.FirstOrDefault() as Subscription;
+                if (selected != null)
+                {
+                    var vm = _services.GetService(typeof(SubscriptionViewModel)) as SubscriptionViewModel;
+                    vm.Load(selected);
+                    var page = new Views.SubscriptionEditPage(vm);
+                    await Navigation.PushAsync(page);
+                    await _vm.LoadAsync();
+                }
+
+                _collectionView.SelectedItem = null;
+            };
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await _vm.LoadAsync();
+
+            // update no-subscriptions visibility
+            var empty = _vm.FilteredSubscriptions.Count == 0;
+            _noSubscriptionsLabel.IsVisible = empty;
+            _collectionView.IsVisible = !empty;
+        }
+
+
+
+        async System.Threading.Tasks.Task OnAddClicked()
+        {
+            var vm = _services.GetService(typeof(SubscriptionViewModel)) as SubscriptionViewModel;
+            // ensure model is new
+            vm.Load(new Models.Subscription { StartDate = DateTime.UtcNow });
+            var page = new Views.SubscriptionEditPage(vm);
+            await Navigation.PushAsync(page);
+            await _vm.LoadAsync();
+        }
+
+        void StyleSelectedFilter(Button selected, Button[] others)
+        {
+            selected.BackgroundColor = Color.FromArgb("#111217");
+            selected.TextColor = Colors.White;
+            foreach (var b in others)
+            {
+                b.BackgroundColor = Colors.Transparent;
+                b.TextColor = Colors.Black;
+            }
+        }
+
+        View BuildBottomBar(bool isStatistics)
+        {
+            var grid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto), new ColumnDefinition(GridLength.Star) }, BackgroundColor = Colors.White, Padding = new Thickness(0,6) };
+            var left = new VerticalStackLayout { HorizontalOptions = LayoutOptions.Center };
+            var leftIndicator = new BoxView { HeightRequest = 4, WidthRequest = 24, BackgroundColor = isStatistics ? Colors.Transparent : Color.FromArgb("#2563EB") };
+            left.Add(leftIndicator);
+            left.Add(new Label { Text = "Подписки", FontSize = 12, TextColor = isStatistics ? Color.FromArgb("#6B6B6B") : Color.FromArgb("#2563EB"), HorizontalOptions = LayoutOptions.Center });
+
+            var right = new VerticalStackLayout { HorizontalOptions = LayoutOptions.Center };
+            var rightIndicator = new BoxView { HeightRequest = 4, WidthRequest = 24, BackgroundColor = isStatistics ? Color.FromArgb("#2563EB") : Colors.Transparent };
+            right.Add(rightIndicator);
+            right.Add(new Label { Text = "Статистика", FontSize = 12, TextColor = isStatistics ? Color.FromArgb("#2563EB") : Color.FromArgb("#6B6B6B"), HorizontalOptions = LayoutOptions.Center });
+
+            var fabPlaceholder = new BoxView { WidthRequest = 56, HeightRequest = 56, BackgroundColor = Color.FromArgb("#2563EB"), CornerRadius = 8, HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center };
+
+            grid.Add(left, 0, 0);
+            grid.Add(fabPlaceholder, 1, 0);
+            grid.Add(right, 2, 0);
+
+            // wire taps
+            var tapLeft = new TapGestureRecognizer();
+            tapLeft.Tapped += async (s,e) => await Shell.Current.GoToAsync("//MainPage");
+            left.GestureRecognizers.Add(tapLeft);
+
+            var tapRight = new TapGestureRecognizer();
+            tapRight.Tapped += async (s,e) => await Shell.Current.GoToAsync("//StatisticsPage");
+            right.GestureRecognizers.Add(tapRight);
+
+            return grid;
+        }
+    }
+}

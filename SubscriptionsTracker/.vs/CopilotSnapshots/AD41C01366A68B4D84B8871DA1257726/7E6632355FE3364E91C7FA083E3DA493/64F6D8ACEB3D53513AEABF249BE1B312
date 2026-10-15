@@ -1,0 +1,23 @@
+﻿using System.Threading.Tasks;
+using SubscriptionsTracker.Services;
+
+namespace SubscriptionsTracker.ViewModels
+{
+    public class StatisticsViewModel : BindableObject
+    {
+        private readonly SubscriptionService _service;
+
+        public decimal MonthlyTotal { get; private set; }
+
+        public StatisticsViewModel(SubscriptionService service)
+        {
+            _service = service;
+        }
+
+        public async Task LoadAsync(int year, int month)
+        {
+            MonthlyTotal = await _service.GetMonthlyTotalAsync(year, month);
+            OnPropertyChanged(nameof(MonthlyTotal));
+        }
+    }
+}

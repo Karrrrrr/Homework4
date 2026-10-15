@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:SubscriptionsTracker.Converters"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="SubscriptionsTracker.MainPage"
+             Title="Подписки">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InitialsConverter x:Key="InitialsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Spacing="12" Padding="16">
+        <!-- Header -->
+        <Grid ColumnDefinitions="*,Auto" Padding="0,6">
+            <Label Text="Подписки" FontSize="22" FontAttributes="Bold" VerticalOptions="Center" />
+            <Label Grid.Column="1" Text="{Binding Source={x:Static system:DateTime.Now}, StringFormat='{0:dd MMMM yyyy г.'}" VerticalOptions="Center" HorizontalOptions="End" FontSize="12" />
+        </Grid>
+
+        <!-- Summary cards -->
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto" ColumnSpacing="8">
+            <Frame Padding="12" HasShadow="False" BorderColor="#E6E6E6" CornerRadius="6">
+                <VerticalStackLayout>
+                    <Label Text="В месяц" FontSize="12" />
+                    <Label Text="{Binding MonthlyTotal, StringFormat='{0:N0} ₽'}" FontSize="20" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Column="1" Padding="12" HasShadow="False" BorderColor="#E6E6E6" CornerRadius="6">
+                <VerticalStackLayout>
+                    <Label Text="Активных" FontSize="12" />
+                    <Label Text="{Binding Subscriptions.Count}" FontSize="20" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <!-- Filters -->
+        <ScrollView Orientation="Horizontal" HeightRequest="56">
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Все" BackgroundColor="#111217" TextColor="White" CornerRadius="12" />
+                <Button Text="Видео" BackgroundColor="Transparent" BorderColor="#E6E6E6" CornerRadius="12" />
+                <Button Text="Музыка" BackgroundColor="Transparent" BorderColor="#E6E6E6" CornerRadius="12" />
+                <Button Text="Облако" BackgroundColor="Transparent" BorderColor="#E6E6E6" CornerRadius="12" />
+                <Button Text="Работа" BackgroundColor="Transparent" BorderColor="#E6E6E6" CornerRadius="12" />
+                <Button Text="Другое" BackgroundColor="Transparent" BorderColor="#E6E6E6" CornerRadius="12" />
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- Subscriptions list -->
+        <CollectionView ItemsSource="{Binding Subscriptions}" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8" ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto">
+                        <!-- Avatar -->
+                        <Frame WidthRequest="44" HeightRequest="44" CornerRadius="8" BackgroundColor="#F1F3F5" HasShadow="False" VerticalOptions="Center">
+                            <Label Text="{Binding Name, Converter={StaticResource InitialsConverter}}" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" />
+                        </Frame>
+
+                        <!-- Details -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="2" Padding="12,0">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Category} • {Binding NextBillingDate, StringFormat='d MMM'}" FontSize="12" TextColor="#6B6B6B" />
+                        </VerticalStackLayout>
+
+                        <!-- Price -->
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center">
+                            <Label Text="{Binding Amount, StringFormat='{0:N0} ₽'}" FontAttributes="Bold" HorizontalOptions="End" />
+                            <Label Text="в месяц" FontSize="11" TextColor="#6B6B6B" HorizontalOptions="End" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom spacing to allow FAB overlap in shell -->
+        <BoxView HeightRequest="24" Color="Transparent" />
+    </VerticalStackLayout>
+
+</ContentPage>

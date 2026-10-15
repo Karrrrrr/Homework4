@@ -1,0 +1,41 @@
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using SubscriptionsTracker.Services;
+using SubscriptionsTracker.ViewModels;
+using SubscriptionsTracker.Models;
+using SubscriptionsTracker.Notifications;
+
+namespace SubscriptionsTracker
+{
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                });
+
+#if DEBUG
+    		builder.Logging.AddDebug();
+#endif
+
+            // Dependency injection registrations for app structure
+            builder.Services.AddSingleton<ISubscriptionRepository, InMemorySubscriptionRepository>();
+            builder.Services.AddSingleton<SubscriptionService>();
+            builder.Services.AddSingleton<INotificationScheduler, NotificationScheduler>();
+
+            builder.Services.AddSingleton<MainViewModel>();
+
+            // Register pages so they can receive viewmodels via DI if desired
+            builder.Services.AddSingleton<MainPage>();
+
+            return builder.Build();
+        }
+    }
+}
+

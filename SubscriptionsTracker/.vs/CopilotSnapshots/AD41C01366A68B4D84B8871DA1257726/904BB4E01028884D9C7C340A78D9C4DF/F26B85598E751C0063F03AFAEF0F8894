@@ -1,0 +1,136 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using SubscriptionsTracker.ViewModels;
+using SubscriptionsTracker.Models;
+
+namespace SubscriptionsTracker.Views
+{
+    public partial class SubscriptionEditPage : ContentPage
+    {
+        public SubscriptionViewModel ViewModel { get; }
+
+        Entry _nameEntry;
+        Entry _amountEntry;
+        DatePicker _startPicker;
+
+        public SubscriptionEditPage(SubscriptionViewModel viewModel)
+        {
+            ViewModel = viewModel;
+            BindingContext = ViewModel;
+
+            Title = "Редактировать";
+            BackgroundColor = Colors.Transparent;
+
+            // Header with close
+            var headerGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(16,12) };
+            headerGrid.Add(new Label { Text = "Редактировать", FontSize = 18, FontAttributes = FontAttributes.Bold, VerticalOptions = LayoutOptions.Center }, 0, 0);
+            var closeBtn = new Button { Text = "✕", BackgroundColor = Colors.Transparent, WidthRequest = 36, HeightRequest = 36 }; 
+            closeBtn.Clicked += async (s, e) => await Navigation.PopAsync();
+            headerGrid.Add(closeBtn, 1, 0);
+
+            // Name field
+            _nameEntry = new Entry { Placeholder = "Название", Background = new Microsoft.Maui.Graphics.SolidFill(Colors.White), Margin = new Thickness(16,8), CornerRadius = 8 };
+            _nameEntry.SetBinding(Entry.TextProperty, "Model.Name");
+
+            // Amount and Start date row
+            _amountEntry = new Entry { Placeholder = "Стоимость, ₽", Keyboard = Keyboard.Numeric, Background = new Microsoft.Maui.Graphics.SolidFill(Colors.White), CornerRadius = 8 };
+            _startPicker = new DatePicker { HorizontalOptions = LayoutOptions.End, Background = new Microsoft.Maui.Graphics.SolidFill(Colors.White), CornerRadius = 8 };
+            _startPicker.SetBinding(DatePicker.DateProperty, "Model.StartDate");
+
+            var amtGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(16,8), ColumnSpacing = 12 };
+            amtGrid.Add(_amountEntry, 0, 0);
+            amtGrid.Add(_startPicker, 1, 0);
+
+            // Payment period
+            var periodLabel = new Label { Text = "Период оплаты", FontSize = 14, Margin = new Thickness(16,8,16,4) };
+            var periodStack = new HorizontalStackLayout { Spacing = 12, Padding = new Thickness(16,0) };
+            var monthlyBtn = new Button { Text = "Ежемесячно", CornerRadius = 10, BackgroundColor = Colors.Black, TextColor = Colors.White };
+            var yearlyBtn = new Button { Text = "Ежегодно", CornerRadius = 10, BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6") };
+            monthlyBtn.Clicked += (s, e) => SetFrequency(Frequency.Monthly, monthlyBtn, yearlyBtn);
+            yearlyBtn.Clicked += (s, e) => SetFrequency(Frequency.Yearly, yearlyBtn, monthlyBtn);
+            periodStack.Add(monthlyBtn);
+            periodStack.Add(yearlyBtn);
+
+            // Categories
+            var catLabel = new Label { Text = "Категория", FontSize = 14, Margin = new Thickness(16,8,16,4) };
+            var catGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star) }, RowDefinitions = { new RowDefinition(GridLength.Auto), new RowDefinition(GridLength.Auto) }, Padding = new Thickness(16,0), RowSpacing = 8, ColumnSpacing = 8 };
+
+            var btnVideo = CreateCategoryButton("Видео", Category.Video);
+            var btnMusic = CreateCategoryButton("Музыка", Category.Music);
+            var btnCloud = CreateCategoryButton("Облако", Category.Cloud);
+            var btnWork = CreateCategoryButton("Работа", Category.Work);
+            var btnOther = CreateCategoryButton("Другое", Category.Other);
+
+            catGrid.Add(btnVideo, 0, 0);
+            catGrid.Add(btnMusic, 1, 0);
+            catGrid.Add(btnCloud, 2, 0);
+            catGrid.Add(btnWork, 0, 1);
+            catGrid.Add(btnOther, 1, 1);
+
+            // Bottom actions
+            var deleteBtn = new Button { Text = "Удалить", TextColor = Colors.Red, BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6"), CornerRadius = 8, HorizontalOptions = LayoutOptions.FillAndExpand };
+            deleteBtn.Clicked += async (s, e) =>
+            {
+                var ok = await DisplayAlert("Подтвердите", "Удалить подписку?", "Да", "Нет");
+                if (ok)
+                {
+                    await ViewModel.DeleteAsync();
+                    await Navigation.PopAsync();
+                }
+            };
+
+            var saveBtn = new Button { Text = "Сохранить", BackgroundColor = Color.FromArgb("#2563EB"), TextColor = Colors.White, CornerRadius = 8, HorizontalOptions = LayoutOptions.FillAndExpand };
+            saveBtn.Clicked += async (s, e) =>
+            {
+                // parse amount
+                if (decimal.TryParse(_amountEntry.Text, out var a))
+                    ViewModel.Model.Amount = a;
+                await ViewModel.SaveAsync();
+                await Navigation.PopAsync();
+            };
+
+            var actionsGrid = new Grid { ColumnDefinitions = { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Star) }, Padding = new Thickness(16,12), ColumnSpacing = 12 };
+            actionsGrid.Add(deleteBtn, 0, 0);
+            actionsGrid.Add(saveBtn, 1, 0);
+
+            // Build main layout
+            var main = new VerticalStackLayout { Spacing = 0, BackgroundColor = Colors.White, CornerRadius = 16 };
+            main.Add(headerGrid);
+            main.Add(_nameEntry);
+            main.Add(amtGrid);
+            main.Add(periodLabel);
+            main.Add(periodStack);
+            main.Add(catLabel);
+            main.Add(catGrid);
+            main.Add(actionsGrid);
+
+            Content = new ScrollView { Content = main, BackgroundColor = Colors.Transparent };
+        }
+
+        Button CreateCategoryButton(string text, Category category)
+        {
+            var b = new Button { Text = text, CornerRadius = 10, BackgroundColor = Colors.Transparent, BorderColor = Color.FromArgb("#E6E6E6") };
+            b.Clicked += (s, e) =>
+            {
+                ViewModel.Model.Category = category;
+                UpdateCategoryButtons();
+            };
+            return b;
+        }
+
+        void UpdateCategoryButtons()
+        {
+            // Refresh UI by forcing property changed
+            ViewModel.OnPropertyChanged("Model");
+        }
+
+        void SetFrequency(Frequency freq, Button selected, Button other)
+        {
+            ViewModel.Model.Frequency = freq;
+            selected.BackgroundColor = Colors.Black;
+            selected.TextColor = Colors.White;
+            other.BackgroundColor = Colors.Transparent;
+            other.TextColor = Colors.Default;
+        }
+    }
+}

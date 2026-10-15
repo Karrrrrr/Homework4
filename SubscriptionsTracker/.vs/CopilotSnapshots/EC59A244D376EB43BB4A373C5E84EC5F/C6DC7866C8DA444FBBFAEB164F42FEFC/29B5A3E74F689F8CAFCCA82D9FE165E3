@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
+
+namespace SubscriptionsTracker.Tests
+{
+    [TestFixture]
+    public class UnitTests
+    {
+        [Test]
+        public void Addition_Works()
+        {
+            Assert.AreEqual(4, 2 + 2);
+        }
+
+        [Test]
+        public void StringContains_CaseInsensitive()
+        {
+            var s = "Subscriptions";
+            Assert.IsTrue(s.IndexOf("sub", StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        [Test]
+        public void List_ContainsValue()
+        {
+            var list = new List<int> { 1, 2, 3 };
+            CollectionAssert.Contains(list, 2);
+        }
+    }
+}
