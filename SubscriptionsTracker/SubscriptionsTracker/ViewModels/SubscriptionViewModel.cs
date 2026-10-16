@@ -14,7 +14,8 @@ namespace SubscriptionsTracker.ViewModels
         public SubscriptionViewModel(SubscriptionService service)
         {
             _service = service;
-            Model = new Subscription();
+            // Для новой подписки устанавливаем пустой Id, чтобы SaveAsync понимал, что нужно добавить запись
+            Model = new Subscription { Id = Guid.Empty };
         }
 
         public void Load(Subscription model)

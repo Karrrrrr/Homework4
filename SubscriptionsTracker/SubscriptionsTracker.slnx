@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="SubscriptionsTracker/SubscriptionsTracker.csproj" />
+  <Project Path="SubscriptionsTracker/SubscriptionsTracker.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>

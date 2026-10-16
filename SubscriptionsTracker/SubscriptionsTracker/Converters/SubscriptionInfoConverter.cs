@@ -21,7 +21,8 @@ namespace SubscriptionsTracker.Converters
                     Category.Work => "Работа",
                     _ => "Другое",
                 };
-                var date = s.NextBillingDate.ToString("d MMM", new CultureInfo("ru-RU"));
+                // Показываем дату начала подписки, а не текущую или дату следующего платежа
+                var date = s.StartDate.ToString("d MMM", new CultureInfo("ru-RU"));
                 return $"{catRu} • {date}";
             }
             return string.Empty;

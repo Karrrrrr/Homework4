@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SubscriptionsTracker.Data;
+using SubscriptionsTracker.Models;
+
+namespace SubscriptionsTracker.Services
+{
+    public class EfSubscriptionRepository : ISubscriptionRepository
+    {
+        private readonly SubscriptionsDbContext _db;
+
+        public EfSubscriptionRepository(SubscriptionsDbContext db)
+        {
+            _db = db;
+        }
+
+        public async Task AddAsync(Subscription subscription)
+        {
+            _db.Subscriptions.Add(subscription);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var entity = await _db.Subscriptions.FindAsync(id);
+            if (entity != null)
+            {
+                _db.Subscriptions.Remove(entity);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<IEnumerable<Subscription>> GetAllAsync()
+        {
+            return await _db.Subscriptions.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Subscription?> GetAsync(Guid id)
+        {
+            return await _db.Subscriptions.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
+        }
+
+        public async Task UpdateAsync(Subscription subscription)
+        {
+            _db.Subscriptions.Update(subscription);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Subscription>> GetDueTomorrowAsync()
+        {
+            var tomorrow = DateTime.UtcNow.Date.AddDays(1);
+            return await _db.Subscriptions.Where(s => s.NextBillingDate.Date == tomorrow).AsNoTracking().ToListAsync();
+        }
+    }
+}

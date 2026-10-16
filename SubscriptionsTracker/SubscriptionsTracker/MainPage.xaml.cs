@@ -29,6 +29,7 @@ namespace SubscriptionsTracker
 
             // Build UI in code to avoid XAML generation issues in this environment
             var converter = new InitialsConverter();
+            var freqConverter = new Converters.FrequencySuffixConverter();
 
             var headerGrid = new Grid { ColumnDefinitions = new ColumnDefinitionCollection { new ColumnDefinition(GridLength.Star), new ColumnDefinition(GridLength.Auto) }, Padding = new Thickness(0,0) };
             headerGrid.Add(new Label { Text = "Подписки", FontSize = 22, FontAttributes = FontAttributes.Bold, VerticalOptions = LayoutOptions.Center, FontFamily = "OpenSansSemibold" }, 0, 0);
@@ -100,7 +101,8 @@ namespace SubscriptionsTracker
                 var amountLabel = new Label { FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.End };
                 amountLabel.FontFamily = "OpenSansSemibold";
                 amountLabel.SetBinding(Label.TextProperty, new Binding("Amount", stringFormat: "{0:N0} ₽"));
-                var freqLabel = new Label { FontSize = 11, TextColor = Color.FromArgb("#6B6B6B"), HorizontalOptions = LayoutOptions.End, Text = "в месяц" };
+                var freqLabel = new Label { FontSize = 11, TextColor = Color.FromArgb("#6B6B6B"), HorizontalOptions = LayoutOptions.End };
+                freqLabel.SetBinding(Label.TextProperty, new Binding("Frequency", converter: freqConverter));
                 priceStack.Add(amountLabel);
                 priceStack.Add(freqLabel);
 
@@ -160,7 +162,7 @@ namespace SubscriptionsTracker
                 // hide overlay and clear popup
                 _popupOverlay.IsVisible = false;
                 _popupOverlay.Children.Clear();
-                await _vm.LoadAsync();
+                await RefreshSubscriptionsAsync();
             });
             _popupOverlay.GestureRecognizers.Add(overlayTap);
             // container for sheet content - will be added/removed dynamically
@@ -197,12 +199,7 @@ namespace SubscriptionsTracker
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await _vm.LoadAsync();
-
-            // update no-subscriptions visibility
-            var empty = _vm.FilteredSubscriptions.Count == 0;
-            _noSubscriptionsLabel.IsVisible = empty;
-            _collectionView.IsVisible = !empty;
+            await RefreshSubscriptionsAsync();
         }
 
 
@@ -211,9 +208,19 @@ namespace SubscriptionsTracker
         {
             var vm = _services.GetService(typeof(SubscriptionViewModel)) as SubscriptionViewModel;
             // ensure model is new
-            vm.Load(new Models.Subscription { StartDate = DateTime.UtcNow });
+            vm.Load(new Models.Subscription { Id = Guid.Empty, StartDate = DateTime.UtcNow });
             ShowSubscriptionPopup(vm);
+            await RefreshSubscriptionsAsync();
+        }
+
+        async System.Threading.Tasks.Task RefreshSubscriptionsAsync()
+        {
             await _vm.LoadAsync();
+
+            // update no-subscriptions visibility
+            var empty = _vm.FilteredSubscriptions.Count == 0;
+            _noSubscriptionsLabel.IsVisible = empty;
+            _collectionView.IsVisible = !empty;
         }
 
         void ShowSubscriptionPopup(SubscriptionViewModel vm)
@@ -236,7 +243,7 @@ namespace SubscriptionsTracker
             {
                 _popupOverlay.IsVisible = false;
                 _popupOverlay.Children.Clear();
-                await _vm.LoadAsync();
+                await RefreshSubscriptionsAsync();
             };
 
             // ensure popup sits above overlay
